@@ -3,427 +3,740 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Growth Strategy for Mabrie Facial Institute — Ground Up Agency</title>
+  <title>Mabrie Facial Institute — Ground Up Agency</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy: #0f1f35;
-      --navy-mid: #1a3050;
-      --gold: #b8965a;
-      --gold-light: #d4aa72;
-      --cream: #f9f6f1;
-      --warm-white: #fdfcfa;
-      --text: #1c1c1c;
-      --muted: #5a5a5a;
-      --border: #e4ddd4;
-      --red: #c0392b;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #fff; color: var(--text); line-height: 1.65; }
 
-    /* NAV */
+    :root {
+      --navy:      #0a1628;
+      --navy-mid:  #0f2040;
+      --navy-card: #132035;
+      --navy-line: rgba(255,255,255,0.08);
+      --gold:      #b8965a;
+      --gold-l:    #d4aa72;
+      --white:     #ffffff;
+      --muted:     rgba(255,255,255,0.55);
+      --faint:     rgba(255,255,255,0.22);
+      --red:       #e05252;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ─── UTILS ─── */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 40px; }
+    @media (max-width: 640px) { .wrap { padding: 0 20px; } }
+
+    .label {
+      display: block; font-size: 10px; font-weight: 600;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+
+    .h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 5.2vw, 64px);
+      font-weight: 300; line-height: 1.1;
+      color: var(--white); margin-bottom: 20px;
+    }
+    .h1 em { font-style: italic; color: var(--gold-l); }
+
+    .h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 3.8vw, 44px);
+      font-weight: 300; line-height: 1.2;
+      color: var(--white); margin-bottom: 18px;
+    }
+    .h2 em { font-style: italic; color: var(--gold-l); }
+
+    .body { font-size: 16px; color: var(--muted); line-height: 1.8; }
+    .body p { margin-bottom: 16px; }
+    .body p:last-child { margin-bottom: 0; }
+    .body strong { color: var(--white); font-weight: 600; }
+
+    .divider {
+      border: none; border-top: 1px solid var(--navy-line);
+      max-width: 860px; margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-block; text-decoration: none; border-radius: 3px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.09em;
+      text-transform: uppercase; transition: opacity 0.2s, background 0.2s;
+      padding: 15px 34px; cursor: pointer;
+    }
+    .btn-gold  { background: var(--gold); color: #fff; }
+    .btn-gold:hover  { background: var(--gold-l); }
+    .btn-ghost {
+      background: transparent; color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+    .btn-outline-gold {
+      background: transparent; color: var(--gold-l);
+      border: 1px solid rgba(184,150,90,0.45);
+    }
+    .btn-outline-gold:hover { border-color: var(--gold-l); color: var(--gold-l); }
+
+    /* ─── NAV ─── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 40px;
+      background: rgba(10,22,40,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--navy-line);
+      padding: 16px 40px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-brand { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--navy); }
-    .nav-sub { font-size: 12px; color: var(--muted); margin-left: 10px; }
-    .nav-cta {
-      background: var(--gold); color: #fff; text-decoration: none;
-      padding: 9px 20px; border-radius: 3px; font-size: 13px; font-weight: 600;
-      letter-spacing: 0.05em; transition: background 0.2s;
+    .nav-logo {
+      /* Center the logo by using absolute positioning within the flex container */
+      position: absolute; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
     }
-    .nav-cta:hover { background: var(--gold-light); }
-    @media (max-width: 640px) { nav { padding: 12px 18px; } .nav-sub { display: none; } }
+    .nav-logo-mark {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--white);
+    }
+    .nav-logo-sub {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .nav-left  { font-size: 12px; color: var(--muted); }
+    .nav-right { padding: 9px 20px; font-size: 12px; }
+    @media (max-width: 640px) { nav { padding: 12px 18px; } .nav-left { display: none; } }
 
-    /* HERO */
+
+    /* ─── 1. HERO ─── */
     .hero {
-      background: var(--navy); color: #fff;
-      padding: 80px 40px 72px;
+      background: var(--navy);
+      padding: 96px 40px 80px;
       display: flex; flex-direction: column; align-items: center; text-align: center;
+      border-bottom: 1px solid var(--navy-line);
     }
     .hero-eyebrow {
       font-size: 11px; font-weight: 500; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--gold-light); margin-bottom: 18px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
     }
-    .hero h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(34px, 5vw, 58px); font-weight: 300; line-height: 1.15;
-      max-width: 820px; margin-bottom: 22px;
+    .hero-stat {
+      font-size: 15px; font-weight: 500; color: var(--muted);
+      margin-bottom: 40px; max-width: 520px; line-height: 1.7;
     }
-    .hero h1 em { font-style: italic; color: var(--gold-light); }
-    .hero-sub {
-      font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.68);
-      max-width: 600px; line-height: 1.7; margin-bottom: 42px;
-    }
-    .btn-gold {
-      background: var(--gold); color: #fff; text-decoration: none;
-      padding: 15px 34px; border-radius: 3px; font-size: 14px; font-weight: 600;
-      letter-spacing: 0.07em; text-transform: uppercase; transition: background 0.2s; display: inline-block;
-    }
-    .btn-gold:hover { background: var(--gold-light); }
-    .btn-ghost {
-      background: transparent; color: rgba(255,255,255,0.8); text-decoration: none;
-      padding: 15px 28px; border-radius: 3px; font-size: 14px; font-weight: 400;
-      border: 1px solid rgba(255,255,255,0.28); transition: border-color 0.2s, color 0.2s; display: inline-block;
-    }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.55); color: #fff; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-    @media (max-width: 640px) { .hero { padding: 56px 20px 52px; } }
+    .hero-stat strong { color: var(--white); }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 56px; }
 
-    /* LOOM SECTION */
-    .loom-section { background: #f0ede9; border-bottom: 1px solid var(--border); padding: 70px 40px; }
-    .loom-inner { max-width: 820px; margin: 0 auto; }
-    .section-label {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block;
-    }
-    .loom-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 3.5vw, 38px); font-weight: 300; color: var(--navy);
-      line-height: 1.2; margin-bottom: 10px;
-    }
-    .loom-sub { font-size: 15px; color: var(--muted); margin-bottom: 32px; }
-    .loom-embed {
+    /* VSL big embed in hero */
+    .hero-vsl-wrap {
+      width: 100%; max-width: 860px;
       position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
-      border-radius: 6px; box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+      border-radius: 10px;
+      box-shadow: 0 16px 64px rgba(0,0,0,0.55), 0 0 0 1px var(--navy-line);
     }
-    .loom-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 6px; }
-    .loom-placeholder {
+    .hero-vsl-wrap iframe {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--navy); border-radius: 6px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
-      cursor: pointer;
+      border: none; border-radius: 10px;
     }
-    .loom-play {
-      width: 72px; height: 72px; background: var(--gold); border-radius: 50%;
+    .vsl-placeholder {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--navy-mid); border-radius: 10px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 20px; cursor: pointer;
+      border: 1px solid var(--navy-line);
+    }
+    .vsl-placeholder:hover .play-btn { transform: scale(1.06); }
+    .play-btn {
+      width: 80px; height: 80px; background: var(--gold); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(184,150,90,0.45); transition: transform 0.2s;
+      box-shadow: 0 8px 32px rgba(184,150,90,0.45); transition: transform 0.2s;
     }
-    .loom-placeholder:hover .loom-play { transform: scale(1.08); }
-    .loom-play svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
-    .loom-placeholder-text { font-size: 13px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; }
+    .play-btn svg { width: 30px; height: 30px; fill: #fff; margin-left: 6px; }
+    .vsl-placeholder-label {
+      font-size: 11px; color: var(--faint); letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .hero-vsl-note { font-size: 13px; color: var(--faint); margin-top: 18px; }
+    @media (max-width: 640px) { .hero { padding: 64px 20px 56px; } }
 
-    /* CONTENT SECTIONS */
-    .content-section { max-width: 820px; margin: 0 auto; padding: 72px 40px; }
-    @media (max-width: 640px) { .content-section { padding: 48px 20px; } }
-    .section-h2 {
+
+    /* ─── 2. ABOUT / WHY LISTEN ─── */
+    .about-section {
+      padding: 88px 40px;
+      border-bottom: 1px solid var(--navy-line);
+    }
+    .team-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px;
+    }
+    @media (max-width: 640px) { .team-grid { grid-template-columns: 1fr; } }
+
+    .team-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-line); border-radius: 8px;
+      overflow: hidden;
+    }
+    .team-card-photo {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      display: block; background: var(--navy-mid);
+    }
+    .team-photo-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--navy-mid) 0%, #0d2a4d 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--faint); letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .team-card-body { padding: 24px 22px; }
+    .team-name { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+    .team-title { font-size: 12px; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+    .team-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
+    .team-desc strong { color: var(--white); }
+
+
+    /* ─── 3. SOCIAL PROOF ─── */
+    .proof-section {
+      padding: 88px 40px;
+      border-bottom: 1px solid var(--navy-line);
+    }
+    .proof-headline-stats {
+      display: flex; gap: 40px; flex-wrap: wrap; margin: 36px 0 56px;
+    }
+    .proof-stat .num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(26px, 3.5vw, 40px); font-weight: 300; color: var(--navy);
-      line-height: 1.2; margin-bottom: 22px;
+      font-size: 52px; font-weight: 300; color: var(--white); line-height: 1; margin-bottom: 6px;
     }
-    .section-h2 em { font-style: italic; color: var(--gold); }
-    .body-copy { font-size: 16px; color: var(--muted); line-height: 1.78; }
-    .body-copy p { margin-bottom: 18px; }
-    .body-copy p:last-child { margin-bottom: 0; }
-    .body-copy strong { color: var(--text); font-weight: 600; }
-    .divider { border: none; border-top: 1px solid var(--border); max-width: 820px; margin: 0 auto; }
+    .proof-stat .lbl { font-size: 13px; color: var(--muted); max-width: 160px; line-height: 1.45; }
 
-    /* AUDIT TABLE */
-    .audit-table { width: 100%; border-collapse: collapse; margin: 36px 0; font-size: 14px; border-radius: 4px; overflow: hidden; }
-    .audit-table th {
-      background: var(--navy); color: rgba(255,255,255,0.85); text-align: left;
-      padding: 12px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    .clients-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;
     }
-    .audit-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
-    .audit-table tr:last-child td { border-bottom: none; }
-    .audit-table tr:nth-child(even) td { background: var(--cream); }
-    .status-none { color: var(--red); font-weight: 600; }
-    .status-ok { color: #2e7d32; font-weight: 600; }
-    .status-partial { color: #e67e22; font-weight: 600; }
+    .client-card {
+      background: var(--navy-card); border: 1px solid var(--navy-line); border-radius: 8px;
+      padding: 24px 22px;
+    }
+    .client-handle {
+      font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 0.07em;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .client-name { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+    .client-desc { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.6; }
+    .client-badge {
+      display: inline-block; background: rgba(184,150,90,0.14); color: var(--gold-l);
+      border: 1px solid rgba(184,150,90,0.3); font-size: 11px; font-weight: 600;
+      padding: 4px 10px; border-radius: 20px; letter-spacing: 0.04em;
+    }
 
-    /* GAP CARDS */
-    .gap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 36px; }
-    .gap-card { border-left: 3px solid var(--red); background: #fff8f7; border-radius: 0 4px 4px 0; padding: 22px 20px; }
-    .gap-card h4 { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
-    .gap-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    /* Testimonial pull-quotes */
+    .testimonials { display: flex; flex-direction: column; gap: 16px; margin-top: 48px; }
+    .testimonial {
+      background: var(--navy-card); border-left: 2px solid var(--gold);
+      border-radius: 0 6px 6px 0; padding: 22px 22px;
+    }
+    .testimonial-quote { font-size: 14px; color: var(--muted); line-height: 1.78; margin-bottom: 12px; }
+    .testimonial-source { font-size: 12px; color: var(--gold); font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; }
 
-    /* BUILD PHASES */
-    .phase-list { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
-    .phase-item { border: 1px solid var(--border); border-radius: 6px; padding: 28px 24px; background: var(--warm-white); }
-    .phase-num { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: block; }
-    .phase-title { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
-    .phase-body { font-size: 14px; color: var(--muted); line-height: 1.7; }
-    .phase-body ul { padding-left: 18px; margin-top: 8px; }
-    .phase-body li { margin-bottom: 5px; }
-    .phase-body p { margin-bottom: 10px; }
+    .proof-cta { margin-top: 56px; text-align: center; }
+    .proof-cta-note { font-size: 13px; color: var(--faint); margin-top: 12px; }
 
-    /* COLLAPSIBLE DELIVERABLES */
-    .deliverables-section { background: var(--navy); padding: 80px 40px; }
-    .deliverables-inner { max-width: 820px; margin: 0 auto; }
-    .deliverables-label { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; display: block; }
-    .deliverables-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3.5vw, 40px); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 12px; }
-    .deliverables-sub { font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 40px; }
+
+    /* ─── 4. DELIVERABLES ─── */
+    .deliverables-section {
+      padding: 88px 40px;
+      border-bottom: 1px solid var(--navy-line);
+      background: var(--navy-mid);
+    }
+    .del-sub { font-size: 15px; color: var(--muted); margin-bottom: 44px; }
 
     details { margin-bottom: 10px; }
-    details[open] summary { border-radius: 6px 6px 0 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
     summary {
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 6px; padding: 18px 22px; cursor: pointer;
-      list-style: none; user-select: none; transition: background 0.15s;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--navy-line);
+      border-radius: 6px; padding: 18px 22px; cursor: pointer; list-style: none;
+      user-select: none; transition: background 0.15s;
     }
-    summary:hover { background: rgba(255,255,255,0.1); }
+    summary:hover { background: rgba(255,255,255,0.07); }
     summary::-webkit-details-marker { display: none; }
-    .summary-left { display: flex; align-items: center; gap: 14px; }
-    .summary-icon { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .summary-icon svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 2; }
-    .summary-title { font-size: 15px; font-weight: 600; color: #fff; }
-    .summary-badge { font-size: 11px; color: var(--gold-light); background: rgba(184,150,90,0.15); border: 1px solid rgba(184,150,90,0.3); padding: 3px 10px; border-radius: 20px; letter-spacing: 0.06em; font-weight: 500; white-space: nowrap; }
-    .chevron { transition: transform 0.25s; flex-shrink: 0; }
-    .chevron svg { width: 18px; height: 18px; stroke: rgba(255,255,255,0.4); fill: none; stroke-width: 2; }
+    details[open] summary { border-radius: 6px 6px 0 0; border-bottom: 1px solid var(--navy-line); }
+
+    .sum-left { display: flex; align-items: center; gap: 14px; }
+    .sum-icon {
+      width: 34px; height: 34px; border-radius: 50%; background: var(--gold); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .sum-icon svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
+    .sum-title { font-size: 15px; font-weight: 600; color: var(--white); }
+    .sum-badge {
+      font-size: 11px; color: var(--gold-l); background: rgba(184,150,90,0.13);
+      border: 1px solid rgba(184,150,90,0.28); padding: 3px 10px; border-radius: 20px;
+      font-weight: 500; white-space: nowrap;
+    }
+    .chevron { transition: transform 0.25s; }
+    .chevron svg { width: 18px; height: 18px; stroke: var(--faint); fill: none; stroke-width: 2; }
     details[open] .chevron { transform: rotate(180deg); }
-    .detail-body {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+
+    .det-body {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--navy-line);
       border-top: none; border-radius: 0 0 6px 6px; padding: 28px 24px;
     }
-    .detail-body p { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.75; margin-bottom: 12px; }
-    .detail-body p:last-child { margin-bottom: 0; }
-    .detail-body strong { color: rgba(255,255,255,0.9); }
-    .detail-body h4 { font-size: 11px; font-weight: 600; color: var(--gold-light); letter-spacing: 0.12em; text-transform: uppercase; margin: 22px 0 10px; }
-    .detail-body h4:first-child { margin-top: 0; }
-    .detail-body ul { padding-left: 18px; }
-    .detail-body li { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 5px; }
-
-    .email-block {
-      background: rgba(0,0,0,0.28); border-radius: 4px;
-      padding: 20px 22px; margin: 12px 0; border-left: 2px solid var(--gold);
+    .det-body p  { font-size: 14px; color: var(--muted); line-height: 1.78; margin-bottom: 12px; }
+    .det-body p:last-child { margin-bottom: 0; }
+    .det-body strong { color: rgba(255,255,255,0.88); }
+    .det-body h4 {
+      font-size: 10px; font-weight: 600; color: var(--gold-l); letter-spacing: 0.14em;
+      text-transform: uppercase; margin: 22px 0 10px;
     }
-    .email-block .email-label { font-size: 10px; font-weight: 600; color: var(--gold-light); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 5px; }
-    .email-block .email-subject { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 10px; }
-    .email-block .email-body { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.75; white-space: pre-wrap; font-family: inherit; }
+    .det-body h4:first-child { margin-top: 0; }
+    .det-body ul { padding-left: 18px; }
+    .det-body li { font-size: 14px; color: var(--muted); line-height: 1.72; margin-bottom: 5px; }
 
-    .ad-concept {
-      background: rgba(0,0,0,0.22); border-radius: 4px;
-      padding: 20px 22px; margin: 12px 0; border-top: 2px solid var(--gold);
+    .email-card {
+      background: rgba(0,0,0,0.28); border-left: 2px solid var(--gold);
+      border-radius: 0 4px 4px 0; padding: 18px 20px; margin: 10px 0;
     }
-    .ad-concept .ad-num { font-size: 10px; font-weight: 600; color: var(--gold-light); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 5px; }
-    .ad-concept .ad-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 10px; }
-    .ad-concept .ad-copy { font-size: 13px; color: rgba(255,255,255,0.58); line-height: 1.75; }
+    .email-card .tag   { font-size: 10px; font-weight: 600; color: var(--gold-l); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+    .email-card .subj  { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.82); margin-bottom: 8px; }
+    .email-card .copy  { font-size: 13px; color: var(--muted); line-height: 1.78; white-space: pre-wrap; }
 
-    /* PROOF */
-    .proof-section { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 72px 40px; }
-    .proof-inner { max-width: 820px; margin: 0 auto; }
-    .proof-stats { display: flex; gap: 48px; flex-wrap: wrap; margin-bottom: 44px; }
-    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; color: var(--navy); line-height: 1; margin-bottom: 4px; }
-    .stat-label { font-size: 13px; color: var(--muted); max-width: 180px; line-height: 1.4; }
-    .proof-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-    .proof-item { background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 22px 20px; border-left: 3px solid var(--gold); }
-    .proof-item p { font-size: 14px; color: var(--muted); line-height: 1.65; }
-    .proof-item p strong { color: var(--navy); }
+    .ad-card {
+      background: rgba(0,0,0,0.22); border-top: 2px solid var(--gold);
+      border-radius: 0 0 4px 4px; padding: 18px 20px; margin: 10px 0;
+    }
+    .ad-card .tag   { font-size: 10px; font-weight: 600; color: var(--gold-l); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+    .ad-card .title { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .ad-card .copy  { font-size: 13px; color: var(--muted); line-height: 1.78; }
 
-    /* OFFER */
-    .offer-section { padding: 72px 40px; }
-    .offer-inner { max-width: 820px; margin: 0 auto; }
-    .pricing-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 14px; }
-    .pricing-table th { background: var(--cream); text-align: left; padding: 12px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); border-bottom: 2px solid var(--border); }
-    .pricing-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+    .del-cta { margin-top: 48px; text-align: center; }
+    .del-cta-note { font-size: 13px; color: var(--faint); margin-top: 12px; }
+
+
+    /* ─── 5. AUDIT ─── */
+    .audit-section {
+      padding: 88px 40px;
+      border-bottom: 1px solid var(--navy-line);
+    }
+
+    .audit-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 32px 0 48px;
+    }
+    .audit-stat-card {
+      background: var(--navy-card); border: 1px solid var(--navy-line);
+      border-radius: 6px; padding: 24px 20px; border-top: 3px solid var(--red);
+    }
+    .audit-stat-card .val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 300; color: var(--red); line-height: 1; margin-bottom: 8px;
+    }
+    .audit-stat-card .desc { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+    .audit-table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      margin-bottom: 48px; border-radius: 4px; overflow: hidden;
+    }
+    .audit-table th {
+      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); text-align: left;
+      padding: 12px 16px; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .audit-table td { padding: 12px 16px; border-bottom: 1px solid var(--navy-line); vertical-align: top; color: var(--muted); }
+    .audit-table tr:last-child td { border-bottom: none; }
+    .audit-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .s-none    { color: #e05252; font-weight: 600; }
+    .s-ok      { color: #6ecf8e; font-weight: 600; }
+    .s-partial { color: #f0a952; font-weight: 600; }
+
+    .gap-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px; margin-bottom: 48px;
+    }
+    .gap-card {
+      border-left: 3px solid var(--red); background: rgba(224,82,82,0.07);
+      border-radius: 0 6px 6px 0; padding: 20px 18px;
+    }
+    .gap-card h4 { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 7px; }
+    .gap-card p  { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    .phase-list { display: flex; flex-direction: column; gap: 16px; }
+    .phase-card {
+      border: 1px solid var(--navy-line); border-radius: 6px;
+      padding: 24px 22px; background: var(--navy-card);
+    }
+    .phase-num   { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; display: block; }
+    .phase-title { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .phase-body  { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .phase-body ul { padding-left: 18px; margin-top: 8px; }
+    .phase-body li { margin-bottom: 4px; }
+    .phase-body p  { margin-bottom: 8px; }
+
+    .audit-cta { margin-top: 56px; text-align: center; }
+    .audit-cta-note { font-size: 13px; color: var(--faint); margin-top: 12px; }
+
+
+    /* ─── 6. OFFER ─── */
+    .offer-section {
+      padding: 88px 40px;
+      border-bottom: 1px solid var(--navy-line);
+      background: var(--navy-mid);
+    }
+    .pricing-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 32px 0; }
+    .pricing-table th {
+      background: rgba(255,255,255,0.06); text-align: left; padding: 12px 16px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7); border-bottom: 1px solid var(--navy-line);
+    }
+    .pricing-table td {
+      padding: 14px 16px; border-bottom: 1px solid var(--navy-line);
+      vertical-align: top; line-height: 1.6; color: var(--muted);
+    }
     .pricing-table tr:last-child td { border-bottom: none; }
-    .pricing-amount { font-weight: 600; color: var(--navy); white-space: nowrap; }
-    .guarantee-box { background: var(--navy); border-radius: 6px; padding: 32px 28px; margin-top: 32px; }
-    .guarantee-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: #fff; margin-bottom: 14px; }
-    .guarantee-box p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 10px; }
+    .price-val { font-weight: 600; color: var(--white); white-space: nowrap; }
+
+    .guarantee-box {
+      background: var(--navy-card); border: 1px solid rgba(184,150,90,0.25);
+      border-radius: 8px; padding: 36px 32px; margin-top: 32px;
+    }
+    .guarantee-box-label { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block; }
+    .guarantee-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: var(--white); margin-bottom: 16px; line-height: 1.25;
+    }
+    .guarantee-box p  { font-size: 15px; color: var(--muted); line-height: 1.78; margin-bottom: 10px; }
     .guarantee-box p:last-child { margin-bottom: 0; }
 
-    /* CTA */
-    .cta-section { background: var(--gold); padding: 80px 40px; text-align: center; }
-    .cta-inner { max-width: 600px; margin: 0 auto; }
-    .cta-label { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.72); margin-bottom: 16px; display: block; }
-    .cta-h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 46px); font-weight: 300; color: #fff; line-height: 1.15; margin-bottom: 18px; }
-    .cta-sub { font-size: 16px; color: rgba(255,255,255,0.82); line-height: 1.7; margin-bottom: 36px; }
-    .btn-white { background: #fff; color: var(--navy); text-decoration: none; padding: 18px 42px; border-radius: 3px; font-size: 15px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; display: inline-block; transition: opacity 0.2s; }
-    .btn-white:hover { opacity: 0.9; }
-    .cta-note { font-size: 13px; color: rgba(255,255,255,0.62); margin-top: 16px; }
+    .offer-cta { margin-top: 52px; text-align: center; }
+    .offer-cta-note { font-size: 13px; color: var(--faint); margin-top: 12px; }
 
-    /* FOOTER */
-    footer { background: var(--navy); color: rgba(255,255,255,0.42); text-align: center; padding: 28px 40px; font-size: 13px; }
-    footer strong { color: rgba(255,255,255,0.78); }
-    footer a { color: var(--gold-light); text-decoration: none; }
+
+    /* ─── 7. FINAL CTA ─── */
+    .cta-section {
+      padding: 100px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--navy-line);
+    }
+    .cta-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 4.5vw, 54px); font-weight: 300; color: var(--white);
+      line-height: 1.15; margin-bottom: 18px;
+    }
+    .cta-h2 em { font-style: italic; color: var(--gold-l); }
+    .cta-sub {
+      font-size: 16px; color: var(--muted); line-height: 1.72;
+      max-width: 560px; margin: 0 auto 40px;
+    }
+    .cta-note { font-size: 13px; color: var(--faint); margin-top: 16px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy); text-align: center;
+      padding: 32px 40px; font-size: 12px; color: var(--faint);
+      border-top: 1px solid var(--navy-line);
+    }
+    footer strong { color: rgba(255,255,255,0.65); }
+    footer a { color: var(--gold-l); text-decoration: none; }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ═══════════════════════════════════════
+     NAV — LOGO CENTER
+═══════════════════════════════════════ -->
 <nav>
-  <div style="display:flex;align-items:center;">
-    <span class="nav-brand">Ground Up Agency</span>
-    <span class="nav-sub">Built for Mabrie Facial Institute</span>
+  <div class="nav-left">Built for Mabrie Facial Institute</div>
+
+  <div class="nav-logo">
+    <span class="nav-logo-mark">Ground Up</span>
+    <span class="nav-logo-sub">Agency</span>
   </div>
-  <a href="#cta" class="nav-cta">Book a Call</a>
+
+  <a href="#cta" class="btn btn-gold nav-right">Book a Call</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <p class="hero-eyebrow">A custom growth audit — Mabrie Facial Institute, 166 Geary Street</p>
-  <h1>The strongest credentials in SF injectable medicine. <em>Zero paid acquisition.</em></h1>
-  <p class="hero-sub">I looked at your practice from the outside. What I found — and what I would build — is in this page and the video below.</p>
+
+<!-- ═══════════════════════════════════════
+     1. HERO + BIG VSL
+═══════════════════════════════════════ -->
+<section class="hero" id="top">
+  <p class="hero-eyebrow">Custom Growth Package — Mabrie Facial Institute</p>
+
+  <h1 class="h1">
+    I can bring Dr. Mabrie <em>10+ new patients every month.</em>
+  </h1>
+
+  <p class="hero-stat">
+    <strong>Generated $1M+ in B2C services revenue.</strong>
+    Built for practices that close on reputation but have zero paid acquisition.
+  </p>
+
   <div class="hero-btns">
-    <a href="#loom" class="btn-gold">Watch the Walkthrough</a>
-    <a href="#audit" class="btn-ghost">Jump to the Audit</a>
+    <a href="#cta" class="btn btn-gold">Book a 30-Minute Call</a>
+    <a href="#deliverables" class="btn btn-ghost">See What We Built</a>
   </div>
-</section>
 
-<!-- LOOM -->
-<div class="loom-section" id="loom">
-  <div class="loom-inner">
-    <span class="section-label">Video Walkthrough</span>
-    <h2 class="loom-heading">8 minutes. Everything I found and exactly what I'd build.</h2>
-    <p class="loom-sub">Watch this before reading the rest. I walk through the audit, the build plan, and the economics specific to your practice.</p>
-    <div class="loom-embed">
-      <div class="loom-placeholder" id="loom-placeholder" onclick="loadLoom()">
-        <div class="loom-play">
-          <svg viewBox="0 0 24 24" style="fill:#fff;stroke:none;"><polygon points="5,3 19,12 5,21"/></svg>
+  <!-- VSL EMBED — large, centered in hero -->
+  <div style="width:100%; max-width:860px;">
+    <div class="hero-vsl-wrap">
+      <!-- Replace LOOM_ID with actual video ID: loom.com/share/LOOM_ID -->
+      <div class="vsl-placeholder" id="vsl-placeholder" onclick="loadVSL()">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
         </div>
-        <p class="loom-placeholder-text">Click to play — Loom walkthrough</p>
+        <span class="vsl-placeholder-label">Watch — 8 minutes</span>
       </div>
-      <iframe id="loom-iframe" src="" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:6px;" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <iframe id="vsl-iframe"
+        src=""
+        style="display:none;"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+      </iframe>
     </div>
-  </div>
-</div>
-
-<!-- AUDIT -->
-<section class="content-section" id="audit">
-  <span class="section-label">What We Found</span>
-  <h2 class="section-h2">You built the most credentialed injectable practice in the city. <em>It's also a ceiling.</em></h2>
-  <div class="body-copy">
-    <p>Johns Hopkins residency. Stanford fellowship. The only facial plastic surgeon in San Francisco whose practice is focused entirely on non-surgical injectables. A proprietary method — Illumination 360° — that you train other doctors in. Dual SFGATE Best of Bay Area awards. 542 answered questions on RealSelf.</p>
-    <p>Every new patient who reaches you, you close. The problem is distribution. Every week, affluent patients in SF are searching for the best injector they can find. They are not finding you through a paid channel because you are not running one. Someone else — with a fraction of your credentials — is getting those patients.</p>
-    <p><strong>Not because they are better. Because they are visible.</strong></p>
-  </div>
-
-  <table class="audit-table">
-    <thead>
-      <tr><th>Asset / Channel</th><th>Current Status</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Meta Ads (Facebook + Instagram)</td><td class="status-none">None active</td></tr>
-      <tr><td>Google Ads</td><td class="status-none">None active</td></tr>
-      <tr><td>Klaviyo (email platform)</td><td class="status-partial">Installed — automation status unknown externally</td></tr>
-      <tr><td>Illumination 360° in paid channels</td><td class="status-none">Not present anywhere</td></tr>
-      <tr><td>RealSelf (249 reviews, 4.8 stars)</td><td class="status-ok">Strong presence — not amplified in paid</td></tr>
-      <tr><td>SFGATE dual award</td><td class="status-ok">Won — not appearing in any paid creative</td></tr>
-      <tr><td>Before/after gallery</td><td class="status-ok">239 photos on RealSelf</td></tr>
-      <tr><td>Yelp listings</td><td class="status-partial">Split across 2 profiles — 387 reviews shown as 114</td></tr>
-      <tr><td>Dedicated booking platform</td><td class="status-none">Contact form only — no live calendar</td></tr>
-      <tr><td>Virtual assessment tool</td><td class="status-ok">Active on site</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<hr class="divider">
-
-<!-- GAPS -->
-<section class="content-section">
-  <span class="section-label">Specific Gaps</span>
-  <h2 class="section-h2">Four things costing you patients <em>this week.</em></h2>
-  <div class="gap-grid">
-    <div class="gap-card">
-      <h4>Illumination 360° is invisible to cold traffic</h4>
-      <p>You built a proprietary method. You train other doctors in it. Not one paid ad, Google campaign, or promoted post mentions it. The strongest differentiator in the SF injectable market has zero paid reach.</p>
-    </div>
-    <div class="gap-card">
-      <h4>Your credential stack goes unseen</h4>
-      <p>Hopkins residency. Stanford fellowship. The only FPS in SF doing exclusively non-surgical. If placed in front of your demographic, it ends the comparison before it starts. It is not appearing anywhere in paid channels.</p>
-    </div>
-    <div class="gap-card">
-      <h4>RealSelf authority not amplified</h4>
-      <p>542 Q&A answers and 249 reviews at 4.8 stars is thought leader territory. Most competitors have 30 to 50 reviews. That earned credibility is not being pushed to cold traffic through any paid channel.</p>
-    </div>
-    <div class="gap-card">
-      <h4>387 Yelp reviews showing as 114</h4>
-      <p>Two Yelp listings split your volume: 273 under "David C. Mabrie MD" and 114 under "Mabrie Facial Institute." Neither listing shows the combined 387. A unified presence ranks differently.</p>
-    </div>
+    <p class="hero-vsl-note">What I found. What I'd build. Why it works for a practice like yours.</p>
   </div>
 </section>
 
-<hr class="divider">
 
-<!-- BUILD PLAN -->
-<section class="content-section">
-  <span class="section-label">What We Would Build</span>
-  <h2 class="section-h2">A four-phase acquisition system <em>specific to 166 Geary.</em></h2>
-  <div class="phase-list">
-    <div class="phase-item">
-      <span class="phase-num">Phase 1 — Month 1</span>
-      <div class="phase-title">Cold Acquisition: Google Search + Meta</div>
-      <div class="phase-body">
-        <p>Google Search campaigns for every high-intent query that currently returns no result from your practice:</p>
-        <ul>
-          <li>"best botox san francisco" / "filler specialist sf"</li>
-          <li>"facial filler expert san francisco" / "botox near union square"</li>
-          <li>"non surgical rhinoplasty san francisco"</li>
-          <li>"illumination 360 san francisco" — branded search for your own method</li>
-        </ul>
-        <p>Each search gets its own ad group. Each ad group leads to a dedicated page — not your homepage. One goal: consultation request.</p>
-        <p>Meta/Instagram: three ad formats using your credential stack and existing RealSelf content. Full ad scripts are in the deliverables below.</p>
-      </div>
-    </div>
-    <div class="phase-item">
-      <span class="phase-num">Phase 2 — Month 1-2</span>
-      <div class="phase-title">Email Activation in Klaviyo</div>
-      <div class="phase-body">
-        <p>Klaviyo is installed. These sequences are not running externally. We write, build in Klaviyo, and hand off for approval:</p>
-        <ul>
-          <li>Virtual assessment follow-up (3 emails, 7 days)</li>
-          <li>Pre-consultation sequence (2 emails before appointment — reduces no-shows)</li>
-          <li>Post-appointment sequence (3 emails — review ask, maintenance, re-booking)</li>
-          <li>90-day reactivation (triggered when patient hasn't booked in 90 days)</li>
-          <li>Monthly value send (educational, not promotional)</li>
-        </ul>
-      </div>
-    </div>
-    <div class="phase-item">
-      <span class="phase-num">Phase 3 — Month 2 Ongoing</span>
-      <div class="phase-title">RealSelf Authority Amplification</div>
-      <div class="phase-body">
-        <p>Your 542 Q&A answers and 239 before/after photos are a creative asset library. Most providers don't use RealSelf content in paid channels. We do.</p>
-        <p>One Q&A answer per week reformatted as an Instagram educational post. Reviews used as social proof in Meta ad creative. Before/after content (policy-compliant) used in retargeting.</p>
-      </div>
-    </div>
-    <div class="phase-item">
-      <span class="phase-num">Phase 4 — Month 2</span>
-      <div class="phase-title">Yelp Consolidation Recommendation</div>
-      <div class="phase-body">
-        <p>We don't manage Yelp directly — but consolidating your two listings would move your visible review count from 114 to 387+. That is a meaningful trust signal for any patient doing pre-booking research on a physician. We flag it, you action it.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ═══════════════════════════════════════
+     2. WHY LISTEN TO US
+═══════════════════════════════════════ -->
+<section class="about-section" id="about">
+  <div class="wrap">
+    <span class="label">Why Listen to Us</span>
+    <h2 class="h2">Two people. Relevant track records. <em>No fluff.</em></h2>
 
-<!-- DELIVERABLES -->
-<div class="deliverables-section" id="deliverables">
-  <div class="deliverables-inner">
-    <span class="deliverables-label">Done-For-You Deliverables</span>
-    <h2 class="deliverables-heading">Everything below was built for your practice.</h2>
-    <p class="deliverables-sub">Not templates. Built specifically for 166 Geary Street. Expand each section to review.</p>
+    <div class="class body" style="margin-bottom:0;">
+      <p style="font-size:16px; color:var(--muted); margin-bottom:0;">
+        The work in this document was built by two people with backgrounds directly relevant to what Dr. Mabrie needs. One has run marketing for over $4.5B in real estate. The other built systems infrastructure at Meta and has attributed over $1M in sales across B2C service businesses.
+      </p>
+    </div>
 
-    <!-- EMAIL OUTREACH SEQUENCE -->
-    <details>
-      <summary>
-        <div class="summary-left">
-          <div class="summary-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+    <div class="team-grid">
+
+      <!-- MARCO -->
+      <div class="team-card">
+        <!-- Photo placeholder — replace src with actual photo -->
+        <div class="team-photo-placeholder">
+          [Marco Garcia — Ex-Meta]
+        </div>
+        <div class="team-card-body">
+          <div class="team-name">Marco Garcia</div>
+          <div class="team-title">Ex-Meta Operations</div>
+          <div class="team-desc">
+            <strong>3 years at Meta/Facebook</strong> on Newsfeed infrastructure and content systems. Scaled a 700-person labeling program across 10 companies. Understands how the platform distributes content at the algorithm level, not just the surface — including how Meta scores health and aesthetic creative after the 2025 enforcement update.
+            <br><br>
+            <strong>$1M+ attributed in B2C services revenue</strong> across coaching, info products, e-commerce, and service businesses. The practices that close on reputation alone — no paid system — are exactly where this applies.
           </div>
-          <span class="summary-title">Outreach Email Sequence</span>
         </div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span class="summary-badge">9 Emails — 3 Pods</span>
+      </div>
+
+      <!-- FRANCIS -->
+      <div class="team-card">
+        <!-- Photo placeholder — replace src with actual photo -->
+        <div class="team-photo-placeholder">
+          [Francis — Digital Pathway]
+        </div>
+        <div class="team-card-body">
+          <div class="team-name">Francis</div>
+          <div class="team-title">Real Estate Marketing Lead</div>
+          <div class="team-desc">
+            <strong>Marketed over $4.5B in real estate</strong> as co-founder of Digital Pathway — a full-stack marketing firm for real estate agents and developers. Built high-trust, high-ticket acquisition systems for a market where credentials and authority are as important as the offer itself.
+            <br><br>
+            That same credential-first positioning is what applies to Dr. Mabrie's practice. The audience making a $1,500 filler decision and the buyer making a $750K real estate decision are responding to the same signals.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     3. SOCIAL PROOF — CLIENT RESULTS
+═══════════════════════════════════════ -->
+<section class="proof-section" id="proof">
+  <div class="wrap">
+    <span class="label">Who We've Worked With</span>
+    <h2 class="h2">Results from real businesses. <em>Not templates.</em></h2>
+
+    <!-- Pull-quote stats -->
+    <div class="proof-headline-stats">
+      <div class="proof-stat">
+        <div class="num">$1M+</div>
+        <div class="lbl">Generated across B2C services</div>
+      </div>
+      <div class="proof-stat">
+        <div class="num">4M+</div>
+        <div class="lbl">Total following across client socials</div>
+      </div>
+      <div class="proof-stat">
+        <div class="num">$1M+</div>
+        <div class="lbl">Combined client revenue per month</div>
+      </div>
+      <div class="proof-stat">
+        <div class="num">3 yrs</div>
+        <div class="lbl">At Meta on Newsfeed infrastructure</div>
+      </div>
+    </div>
+
+    <!-- Client cards -->
+    <div class="clients-grid">
+
+      <div class="client-card">
+        <div class="client-handle">@dariusworkout</div>
+        <div class="client-name">Darius</div>
+        <div class="client-desc">416K followers. Fitness and bodyweight training. Built full funnel infrastructure — lead magnets, opt-ins, VSL, backend email sequences.</div>
+        <span class="client-badge">416K Followers</span>
+      </div>
+
+      <div class="client-card">
+        <div class="client-handle">@valentinalequeux</div>
+        <div class="client-name">Valentina Lequeux</div>
+        <div class="client-desc">1.5M followers. CPT, Breathwork Facilitator and Mindset Coach. Multi-six figures per month. 40%+ month-over-month sales increase.</div>
+        <span class="client-badge">40%+ MoM Revenue Growth</span>
+      </div>
+
+      <div class="client-card">
+        <div class="client-handle">Ivy Brothers</div>
+        <div class="client-name">Ivy Brothers</div>
+        <div class="client-desc">Ivy League prep. 200+ students, 100% acceptance rate, $9M in outcomes. $60K additional revenue generated in month one of engagement.</div>
+        <span class="client-badge">+$60K Month One</span>
+      </div>
+
+      <div class="client-card">
+        <div class="client-handle">@realbenjaminseda</div>
+        <div class="client-name">Benjamin Seda</div>
+        <div class="client-desc">1.47M YouTube subscribers. Private dating consultant. Built acquisition and email systems. $200K+ in attributed revenue.</div>
+        <span class="client-badge">$200K+ Attributed</span>
+      </div>
+
+      <div class="client-card">
+        <div class="client-handle">@zackgray</div>
+        <div class="client-name">Zack Gray</div>
+        <div class="client-desc">24.9K followers. Helps EDM producers become headliners. Built complete challenge funnel and paid acquisition system.</div>
+        <span class="client-badge">Full Funnel Build</span>
+      </div>
+
+      <div class="client-card">
+        <div class="client-handle">Jack Ormonroyd</div>
+        <div class="client-name">Coaching Launch</div>
+        <div class="client-desc">$40K cash collected in 72 hours on a single launch. 30+ booked calls. 42% webinar show rate. Single campaign, first run.</div>
+        <span class="client-badge">$40K in 72 Hours</span>
+      </div>
+
+    </div>
+
+    <!-- Testimonial pull-quotes from the PDF -->
+    <div class="testimonials">
+
+      <div class="testimonial">
+        <p class="testimonial-quote">"Marco came in and rebuilt a good chunk of our entire funnel — lead magnets, opt-ins, the main VSL, backend operations. Things I just didn't have to think about anymore. It was handled. But what actually surprised me was how he helped us rethink the whole strategy at a high level too, like pre-call sequences, post-call booking flows, all the backend best practices that actually move the needle when you're selling high-ticket."</p>
+        <span class="testimonial-source">Ben — Client</span>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-quote">"They've taken a huge amount of mental pressure off my plate, allowing me to focus on what matters most. Communication has been seamless, they're extremely easy to work with, and they consistently go above and beyond."</p>
+        <span class="testimonial-source">Zack Gray — EDM Producer Education</span>
+      </div>
+
+    </div>
+
+    <div class="proof-cta">
+      <a href="#cta" class="btn btn-gold">Book a 30-Minute Call</a>
+      <p class="proof-cta-note">No commitment. No pitch deck.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     4. DELIVERABLES — WHAT WE BUILT FOR MABRIE
+═══════════════════════════════════════ -->
+<section class="deliverables-section" id="deliverables">
+  <div class="wrap">
+    <span class="label">Done-For-You Deliverables</span>
+    <h2 class="h2">Everything below was built for Mabrie Facial Institute. <em>Not a template.</em></h2>
+    <p class="del-sub">Expand each section to review the actual assets. All of it is yours regardless of whether we work together.</p>
+
+    <!-- ── DELIVERABLE 1: GAP ANALYSIS ── -->
+    <details open>
+      <summary>
+        <div class="sum-left">
+          <div class="sum-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <span class="sum-title">Current State Gap Analysis</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="sum-badge">Full Audit</span>
           <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
         </div>
       </summary>
-      <div class="detail-body">
-        <p>Three pods — optimized for the initial click, post-open follow-up, and no-open re-engagement. Every email is under 100 words. One CTA only. Written for Dr. Mabrie's caliber — no generic marketing energy.</p>
+      <div class="det-body">
+        <h4>The single biggest gap</h4>
+        <p>Dr. Mabrie has <strong>zero paid acquisition.</strong> Not underperforming ads. Not weak creative. Zero. Every new patient arrived through a referral, organic search, or RealSelf discovery. That is a distribution problem at scale — and the specific type we solve.</p>
 
-        <h4>Pod 1 — Get the Click (Emails 1-3)</h4>
-        <div class="email-block">
-          <div class="email-label">Email 1 — Day 0</div>
-          <div class="email-subject">Subject: 542 questions, 0 paid ads</div>
-          <div class="email-body">Dr. Mabrie,
+        <h4>What we found in the audit</h4>
+        <p><strong>Illumination 360 is invisible to cold traffic.</strong> Dr. Mabrie developed a proprietary full-face injectable methodology. He trains other doctors in it. It is the strongest differentiator in the SF injectable market. It does not exist in a single paid ad, Google Search campaign, or promoted post.</p>
+        <p><strong>The credential story reaches zero cold traffic.</strong> Johns Hopkins residency. Stanford fellowship. The only facial plastic surgeon in SF doing exclusively non-surgical injectables. That credential stack — placed in front of the right audience — ends the consideration process before it starts. It is not being placed anywhere.</p>
+        <p><strong>RealSelf authority is not being amplified.</strong> 542 Q&A answers and 249 reviews at 4.8 stars is thought-leader territory. Most providers in this market have 30 to 50 reviews and no Q&A presence. None of it is being pushed to cold traffic.</p>
+        <p><strong>Two Yelp listings split review volume.</strong> "David C. Mabrie MD" has 273 reviews. "Mabrie Facial Institute" has 114. Combined: 387. Neither listing shows that number. A unified presence would rank significantly higher.</p>
+      </div>
+    </details>
+
+    <!-- ── DELIVERABLE 2: LANDING PAGE ── -->
+    <details>
+      <summary>
+        <div class="sum-left">
+          <div class="sum-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <span class="sum-title">New Dedicated Landing Page</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="sum-badge">Live Preview Available</span>
+          <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+        </div>
+      </summary>
+      <div class="det-body">
+        <p>Built a dedicated consultation request page for paid traffic — separate from yourfaceinourhands.com. Every paid click lands here, never the homepage. One job: get the consultation request.</p>
+
+        <h4>What's different from the current site</h4>
+        <ul>
+          <li>Opens with the credential hook — Hopkins residency + Stanford fellowship in the headline, not buried in a bio</li>
+          <li>Illumination 360 positioned as a proprietary methodology, not a service menu item</li>
+          <li>SFGATE dual award + 249 RealSelf reviews visible in the first scroll</li>
+          <li>Single CTA: Virtual or in-person consultation request. No navigation. No menu. No exits.</li>
+          <li>Meta compliant — no before/after imagery, no personal attribute language, no outcome guarantees</li>
+          <li>Mobile-first. 85%+ of this audience will land on mobile from a Meta ad.</li>
+        </ul>
+
+        <p><strong>Live preview:</strong> The page is complete and ready to review. URL provided on request — or linked in the outreach package.</p>
+      </div>
+    </details>
+
+    <!-- ── DELIVERABLE 3: EMAIL SEQUENCE ── -->
+    <details>
+      <summary>
+        <div class="sum-left">
+          <div class="sum-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          </div>
+          <span class="sum-title">9-Email Outreach Sequence</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="sum-badge">3 Pods</span>
+          <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+        </div>
+      </summary>
+      <div class="det-body">
+        <p>Not a drip campaign. Three pods — each triggered by behavior (opened, didn't open, responded). Every email under 100 words. One CTA. No em dashes, no bro-marketer energy. Written to match the caliber of a 25-year surgeon.</p>
+
+        <h4>Pod 1 — Optimize for the click (Emails 1-3)</h4>
+
+        <div class="email-card">
+          <div class="tag">Email 1 — Subject</div>
+          <div class="subj">542 questions, 0 paid ads</div>
+          <div class="copy">Dr. Mabrie,
 
 You've answered 542 questions on RealSelf. 249 reviews at 4.8 stars. SFGATE Best Botox and Best Medical Spa in the same year.
 
@@ -433,15 +746,16 @@ Put together a short document on what I found and exactly what I'd build. Specif
 
 If it's not useful you'll know in the first 30 seconds.
 
-[Link to this page]
+[Link]
 
 Marco Garcia
 Ground Up Agency</div>
         </div>
-        <div class="email-block">
-          <div class="email-label">Email 2 — Day 3, same thread</div>
-          <div class="email-subject">Subject: (same thread)</div>
-          <div class="email-body">Following up in case this got buried.
+
+        <div class="email-card">
+          <div class="tag">Email 2 — Day 3 — Same Thread</div>
+          <div class="subj">(continuing)</div>
+          <div class="copy">Following up in case this got buried.
 
 The document covers three specific things: what the i360 method could look like in paid channels, what it costs someone searching "best Botox san francisco" right now to not find your practice, and what we'd build to change that.
 
@@ -451,10 +765,11 @@ Takes about 10 minutes to read. Everything in it is specific to 166 Geary.
 
 Marco</div>
         </div>
-        <div class="email-block">
-          <div class="email-label">Email 3 — Day 6, same thread</div>
-          <div class="email-subject">Subject: (same thread)</div>
-          <div class="email-body">Last follow-up in this thread.
+
+        <div class="email-card">
+          <div class="tag">Email 3 — Day 6 — Same Thread</div>
+          <div class="subj">(continuing)</div>
+          <div class="copy">Last follow-up in this thread.
 
 One specific observation: your Illumination 360 approach is the strongest injectable methodology in the SF market. It is not in a single paid ad, Google Search campaign, or promoted post anywhere.
 
@@ -467,329 +782,389 @@ If timing is not right, no issue. I'll check back in a few months.
 Marco</div>
         </div>
 
-        <h4>Pod 2 — Opened, No Response (Emails 4-6)</h4>
-        <div class="email-block">
-          <div class="email-label">Email 4 — Day 9 (if opened)</div>
-          <div class="email-subject">Subject: (same thread)</div>
-          <div class="email-body">Saw you opened the document.
+        <h4>Pod 2 — Opened but no response (Emails 4-6, Days 9-15)</h4>
+        <p>Triggered if the document was opened via tracking link or email pixel. Shifts to softer CTAs: "happy to clarify," adds the Yelp consolidation insight as a value-add, wraps up with offer standing open.</p>
 
-Happy to clarify anything or talk through the Google Search piece specifically. That one tends to generate the most questions.
+        <h4>Pod 3 — No open (Emails 7-9, fresh thread Day 18+)</h4>
+        <p>New subject line, new entry point. Leads with "the only FPS in SF doing only injectables" as the hook. Same specificity, different angle. Wraps at Day 24 with 90-day re-engagement scheduled.</p>
+      </div>
+    </details>
 
-No commitment, no pitch deck. Just a conversation.
-
-[Calendar link]
-
-Marco</div>
+    <!-- ── DELIVERABLE 4: AD CREATIVES ── -->
+    <details>
+      <summary>
+        <div class="sum-left">
+          <div class="sum-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          </div>
+          <span class="sum-title">5 Ad Creative Concepts</span>
         </div>
-        <div class="email-block">
-          <div class="email-label">Email 5 — Day 12</div>
-          <div class="email-subject">Subject: (same thread)</div>
-          <div class="email-body">One thing I didn't include in the document:
-
-Your two Yelp listings are splitting your review volume. "David C. Mabrie MD" has 273. "Mabrie Facial Institute" has 114. Combined that's 387. Neither listing shows that number.
-
-Consolidating to one profile would move you into a different tier of Yelp visibility. Not complicated to fix.
-
-Happy to walk through this along with the paid piece if you want to talk.
-
-[Calendar link]
-
-Marco</div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="sum-badge">Meta Compliant</span>
+          <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
         </div>
-        <div class="email-block">
-          <div class="email-label">Email 6 — Day 15</div>
-          <div class="email-subject">Subject: (same thread)</div>
-          <div class="email-body">Wrapping up follow-ups on this thread.
+      </summary>
+      <div class="det-body">
+        <p>Five distinct creative directions for cold traffic on Meta/Instagram. All Meta-compliant for health and aesthetic advertising per the January 2025 enforcement update — no before/after imagery, no personal attribute language, no outcome guarantees. Hooks are credential-first, not medspa-generic.</p>
 
-The offer in the document stands if you want to revisit. Guarantee is still attached.
+        <h4>5 concepts built</h4>
 
-If this is not the right time, no hard feelings. I'll follow up in 90 days.
+        <div class="ad-card">
+          <div class="tag">Ad 1 — Proof-Led (Cold Prospecting)</div>
+          <div class="title">Voted Best Botox and Best Medical Spa in the Bay Area — Same Year</div>
+          <div class="copy">Most injectors have a certification. Dr. David Mabrie has a residency from Johns Hopkins, a fellowship from Stanford, and 25 years focused exclusively on what fillers and Botox can do for a face. If you have been thinking about Botox or fillers and want a physician-level result, this is the practice.
 
-Marco</div>
+Format: 1080x1080. Clean navy or white background. SFGATE award badge. No clinical imagery.</div>
         </div>
 
-        <h4>Pod 3 — No Open, New Thread (Emails 7-9)</h4>
-        <div class="email-block">
-          <div class="email-label">Email 7 — Day 18, new thread</div>
-          <div class="email-subject">Subject: the only FPS in SF doing only injectables</div>
-          <div class="email-body">Dr. Mabrie,
+        <div class="ad-card">
+          <div class="tag">Ad 2 — Comparison Chart (Cold + Warm)</div>
+          <div class="title">The Only Facial Plastic Surgeon in SF Doing Exclusively Injectables</div>
+          <div class="copy">Side-by-side: "Standard Medspa Injector" vs. "Dr. Mabrie" — certification vs. Hopkins + Stanford, general aesthetic services vs. 25 years focused exclusively on injectables, no proprietary method vs. Illumination 360. Positions categorically, not comparatively.
 
-Not sure if my last email made it through.
-
-I sent a document about a specific gap I noticed: you are the only facial plastic surgeon in San Francisco whose practice is focused entirely on injectables. Hopkins residency, Stanford fellowship, 25 years of focused practice. Zero paid acquisition.
-
-The document covers what that gap is costing and what I'd build to close it.
-
-[Link]
-
-Marco Garcia
-Ground Up Agency</div>
+Format: 1080x1080. Clean two-column layout. Dark navy background, gold accent.</div>
         </div>
-        <div class="email-block">
-          <div class="email-label">Email 8 — Day 21</div>
-          <div class="email-subject">Subject: (same thread)</div>
-          <div class="email-body">The core observation in the document:
 
-Someone right now is searching "best filler specialist san francisco" on Google. They have budget. They want a physician-level result, not a medspa. They are not finding you because you are not in the paid results.
+        <div class="ad-card">
+          <div class="tag">Ad 3 — The i360 Method (Big Idea)</div>
+          <div class="title">Most Practices Inject By Area. Dr. Mabrie Treats the Face as a System.</div>
+          <div class="copy">Explainer-style. The Illumination 360 method as a concept — assessing facial structure from 360 degrees before touching a needle. "It's why patients fly in from outside the Bay Area."
 
-The document has the full breakdown.
-
-[Link]
-
-Marco</div>
+Format: Short-form video or static with diagram overlay. Authority without being clinical.</div>
         </div>
-        <div class="email-block">
-          <div class="email-label">Email 9 — Day 24 (Final)</div>
-          <div class="email-subject">Subject: (same thread)</div>
-          <div class="email-body">Last one.
 
-I built out a full acquisition strategy specific to your practice and the i360 method. It's in the document. If timing is not right I'll follow up in 90 days.
+        <div class="ad-card">
+          <div class="tag">Ad 4 — Curiosity / VOC (Warm Retargeting)</div>
+          <div class="title">"I Look Even Better Now Than 15 Years Ago"</div>
+          <div class="copy">Pulls directly from verified RealSelf patient language. Natural results framing — "Your look is always natural. Never over done." Positions Dr. Mabrie through the patient voice. No outcome promise — pure patient perspective.
 
-[Link]
+Format: Static quote card. Clean typography. Gold accent on quote attribution.</div>
+        </div>
 
-Marco</div>
+        <div class="ad-card">
+          <div class="tag">Ad 5 — Direct Offer (Intent Capture)</div>
+          <div class="title">542 Questions Answered on RealSelf. Now Accepting New Patients in SF.</div>
+          <div class="copy">Authority through engagement volume. 542 Q&A answers is documented thought leadership — more than any comparable practice in the city. One CTA: virtual or in-person consultation. Simple. Direct. Ends the consideration process.
+
+Format: 1080x1080. Text-led. Minimal design.</div>
         </div>
       </div>
     </details>
 
-    <!-- META AD SCRIPTS -->
+    <!-- ── DELIVERABLE 5: PATIENT REACTIVATION ── -->
     <details>
       <summary>
-        <div class="summary-left">
-          <div class="summary-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="sum-left">
+          <div class="sum-icon">
+            <svg viewBox="0 0 24 24"><polyline points="23,4 23,10 17,10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
           </div>
-          <span class="summary-title">Meta Ad Scripts + Concepts</span>
+          <span class="sum-title">Patient Reactivation Email Sequence</span>
         </div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span class="summary-badge">3 Ads — Policy Compliant</span>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="sum-badge">3 Emails</span>
           <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
         </div>
       </summary>
-      <div class="detail-body">
-        <p>Three ad formats for cold traffic. Each uses a different angle from your credential stack and existing RealSelf authority. All compliant with Meta's 2025 health advertising policy — no before/after, no personal attribute language, no outcome guarantees.</p>
-        <div class="ad-concept">
-          <div class="ad-num">Ad 1 — Credential Hook (Cold Prospecting)</div>
-          <div class="ad-title">Most injectors have a certification.</div>
-          <div class="ad-copy"><strong>Primary text:</strong> Most injectors have a certification. Dr. David Mabrie has a residency from Johns Hopkins, a fellowship from Stanford, and 25 years focused exclusively on what fillers and Botox can do for a face. Voted Best Botox and Best Medical Spa in the Bay Area by SFGATE. If you're considering injectables in San Francisco, this is the standard to compare against.
+      <div class="det-body">
+        <p>Klaviyo is installed on the practice site. These sequences are not running (externally confirmed). The existing patient list is the highest-converting channel — and right now it is sitting idle.</p>
 
-<strong>Headline:</strong> The only facial plastic surgeon in SF focused entirely on injectables.
-<strong>Format:</strong> Short-form video (30-45 sec) or static 1080x1080. Credential stack as differentiator.
-<strong>Audience:</strong> Women 35-58, SF Bay Area 25mi, HHI $125K+, interest in cosmetic procedures.</div>
-        </div>
-        <div class="ad-concept">
-          <div class="ad-num">Ad 2 — i360 Method (Cold + Warm)</div>
-          <div class="ad-title">Most practices inject by area.</div>
-          <div class="ad-copy"><strong>Primary text:</strong> Most practices treat injectables by area. Forehead. Lips. Cheeks. Dr. David Mabrie treats the face as a connected system. Every decision about one area changes what the next decision should be. It's the Illumination 360 approach — and it's why patients book 6 weeks out.
-
-<strong>Headline:</strong> The face as a system. Not a list of areas.
-<strong>Format:</strong> Explainer video or graphic with facial anatomy concept. Positions i360 as differentiator.
-<strong>CTA:</strong> Virtual assessment — upload photos, get a plan before your first visit.</div>
-        </div>
-        <div class="ad-concept">
-          <div class="ad-num">Ad 3 — Social Proof (Retargeting)</div>
-          <div class="ad-title">542 questions answered on RealSelf.</div>
-          <div class="ad-copy"><strong>Primary text:</strong> 542 questions answered on RealSelf. 249 reviews at 4.8 stars. There's a reason patients come back for 15 years. Dr. David Mabrie, MD FACS. The only facial plastic surgeon in San Francisco whose entire practice is non-surgical injectables.
-
-<strong>Headline:</strong> Most Loved Injector, Bay Area — RealSelf
-<strong>Format:</strong> Static or carousel. Review pull-quotes + credential strip.
-<strong>Audience:</strong> Site visitors who didn't convert within 72 hours. Softer CTA — virtual assessment.</div>
-        </div>
-      </div>
-    </details>
-
-    <!-- KLAVIYO SEQUENCES -->
-    <details>
-      <summary>
-        <div class="summary-left">
-          <div class="summary-icon">
-            <svg viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
-          </div>
-          <span class="summary-title">Klaviyo Email Sequences</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span class="summary-badge">5 Sequences — Built &amp; Ready</span>
-          <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
-        </div>
-      </summary>
-      <div class="detail-body">
-        <p>Klaviyo is installed on your site. These sequences are not active externally. We write them, build them in Klaviyo, and hand off for approval. You own everything regardless.</p>
-        <h4>Sequence 1 — Virtual Assessment Follow-Up</h4>
-        <p>Triggered when someone submits the online assessment. 3 emails over 7 days. Goal: convert the soft inquiry into a booked consultation. Tone: warm, informative, low pressure.</p>
-        <h4>Sequence 2 — Pre-Consultation</h4>
-        <p>2 emails between booking and appointment. Sets expectations, reduces no-shows, primes the patient on the i360 process. Increases show rate and first-visit satisfaction.</p>
-        <h4>Sequence 3 — Post-Appointment</h4>
-        <p>3 emails after the first visit: thank you + review ask (timed to peak satisfaction) → maintenance schedule introduction → re-booking soft prompt with educational framing.</p>
-        <h4>Sequence 4 — 90-Day Reactivation</h4>
-        <p>Triggered when a patient hasn't booked in 90 days. One email based on last treatment type. Pulls back lapsed patients with a relevant, non-promotional reason to re-engage.</p>
-        <h4>Sequence 5 — Monthly Value Send</h4>
-        <p>One educational email per month. Not promotional. Draws from your RealSelf Q&A library. Positions Dr. Mabrie as the authority, not just the provider. The long-term retention engine.</p>
-      </div>
-    </details>
-
-    <!-- LANDING PAGES -->
-    <details>
-      <summary>
-        <div class="summary-left">
-          <div class="summary-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-          </div>
-          <span class="summary-title">Dedicated Landing Pages</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span class="summary-badge">3 Pages — Ad Traffic Ready</span>
-          <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
-        </div>
-      </summary>
-      <div class="detail-body">
-        <p>Paid traffic needs dedicated pages — not your homepage. Each page is built for one audience, one intent, one action. No navigation away, no distractions.</p>
-        <h4>Page 1 — Consultation Request (Google Search)</h4>
-        <p>High-intent visitors from search. Credential stack above the fold. Structure: credentials, i360 brief, SFGATE award + RealSelf stats, single form. One CTA: request a consultation.</p>
-        <h4>Page 2 — Virtual Assessment (Meta Cold Traffic)</h4>
-        <p>Lower-intent visitors from Meta. Softer ask: upload photos, get a personalized plan. More education before conversion. Walks through the i360 process, Dr. Mabrie's background, and what the assessment looks like.</p>
-        <h4>Page 3 — i360 Method Explainer</h4>
-        <p>For Meta traffic on the methodology angle. Educational first, conversion second. Explains Illumination 360° in plain language and ends with a soft consultation CTA.</p>
-      </div>
-    </details>
-
-    <!-- GOOGLE SEARCH CAMPAIGN -->
-    <details>
-      <summary>
-        <div class="summary-left">
-          <div class="summary-icon">
-            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </div>
-          <span class="summary-title">Google Search Campaign Architecture</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span class="summary-badge">5-8 Ad Groups</span>
-          <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
-        </div>
-      </summary>
-      <div class="detail-body">
-        <p>These are the searches happening right now with no ads serving your practice. Each term gets a dedicated ad group and dedicated landing page.</p>
-        <h4>Target Keywords</h4>
+        <h4>Three sequences built</h4>
         <ul>
-          <li>"best botox san francisco" — highest intent, highest volume in your category</li>
-          <li>"filler specialist sf" / "facial filler expert san francisco"</li>
-          <li>"botox near union square" — geo-targeted, proximity searchers</li>
-          <li>"non surgical rhinoplasty san francisco" — 39 before/afters on RealSelf, strong close rate</li>
-          <li>"illumination 360 san francisco" — branded search for your own method</li>
-          <li>"best injector san francisco" / "physician injector sf"</li>
+          <li><strong>Virtual Assessment follow-up:</strong> Triggered when someone submits the online assessment. 3 emails over 7 days. Converts soft inquiry into a booked consultation.</li>
+          <li><strong>90-day reactivation:</strong> Triggered when a patient hasn't booked in 90 days. Personalized by last treatment type. One email. Direct ask.</li>
+          <li><strong>Post-consultation pre-appointment:</strong> 2 emails before the appointment. Increases show rate. Sets expectations for the visit.</li>
         </ul>
-        <h4>Campaign Structure</h4>
-        <p>One campaign, 5-8 ad groups. 3 ads per ad group (A/B/C headlines). Each ad group links to a matching landing page. Conversion tracking installed day one — cost per consultation request is the primary KPI.</p>
-        <h4>Estimated Budget</h4>
-        <p>$1,500 to $2,000/month in Google Search spend (paid directly to Google). At a conservative 10% consultation-to-booking rate and $1,200 average first treatment, 15 consultations/month from search covers the ad spend 9x.</p>
+
+        <p>These are done-for-you. Written, structured, ready to activate in Klaviyo. Dr. Mabrie reviews, approves, and flips the switch.</p>
       </div>
     </details>
 
-  </div>
-</div>
-
-<!-- PROOF -->
-<div class="proof-section">
-  <div class="proof-inner">
-    <span class="section-label">Results We've Driven</span>
-    <h2 class="section-h2" style="margin-bottom:36px;">Where this thinking comes from.</h2>
-    <div class="proof-stats">
-      <div>
-        <div class="stat-num">$40K</div>
-        <div class="stat-label">Cash collected in 72 hours — coaching client launch</div>
-      </div>
-      <div>
-        <div class="stat-num">$60K</div>
-        <div class="stat-label">Additional revenue in month one — service business</div>
-      </div>
-      <div>
-        <div class="stat-num">40%+</div>
-        <div class="stat-label">Month over month sales increase — multi-six-figure service client</div>
-      </div>
-      <div>
-        <div class="stat-num">3 yrs</div>
-        <div class="stat-label">At Meta on Newsfeed infrastructure</div>
-      </div>
-    </div>
-    <div class="proof-items">
-      <div class="proof-item"><p><strong>Not surface-level ad knowledge.</strong> I spent 3 years at Meta on Newsfeed infrastructure — how the platform distributes content, how it scores creative, what compliance-safe health advertising looks like after 2025 enforcement updates.</p></div>
-      <div class="proof-item"><p><strong>Your demographic is one of the highest-precision audiences on Meta.</strong> Women 35-58, SF Bay Area, HHI $125K+, interest in cosmetic procedures. The platform was built for this. Most medical practices don't run it.</p></div>
-      <div class="proof-item"><p><strong>Performance is strictly attributed.</strong> We only claim revenue from patients who clicked our ad, landed on our page, booked through our link, and completed treatment within 30 days. If they didn't come through our system, we don't claim it.</p></div>
+    <div class="del-cta">
+      <a href="#cta" class="btn btn-gold">Book a 30-Minute Call</a>
+      <p class="del-cta-note">Everything above is yours regardless. No strings.</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- OFFER -->
-<div class="offer-section">
-  <div class="offer-inner">
-    <span class="section-label">The Offer</span>
-    <h2 class="section-h2">Everything included — and the <em>guarantee.</em></h2>
-    <table class="pricing-table">
+
+<!-- ═══════════════════════════════════════
+     5. FULL AUDIT — WHAT WE FOUND
+═══════════════════════════════════════ -->
+<section class="audit-section" id="audit">
+  <div class="wrap">
+    <span class="label">Current State Audit</span>
+    <h2 class="h2">What we found when we looked at <em>166 Geary.</em></h2>
+
+    <!-- 3 stat callouts -->
+    <div class="audit-stats">
+      <div class="audit-stat-card">
+        <div class="val">Zero</div>
+        <div class="desc">Paid ads running anywhere — Google, Meta, TikTok. None.</div>
+      </div>
+      <div class="audit-stat-card">
+        <div class="val">387</div>
+        <div class="desc">Yelp reviews split across 2 listings. Neither shows that number.</div>
+      </div>
+      <div class="audit-stat-card">
+        <div class="val">$0</div>
+        <div class="desc">Captured from patients searching "best Botox San Francisco" right now.</div>
+      </div>
+    </div>
+
+    <!-- Infrastructure audit table -->
+    <table class="audit-table">
       <thead>
-        <tr><th>Component</th><th>What's Included</th><th>Amount</th></tr>
+        <tr>
+          <th>Channel / Asset</th>
+          <th>Status</th>
+          <th>Notes</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Setup — one time</strong></td>
-          <td>Google + Meta strategy, 3 ad creatives, 3 landing pages, all Klaviyo sequences written and built, RealSelf content plan, first Google campaign launched with conversion tracking</td>
-          <td class="pricing-amount">$4,500</td>
+          <td>Meta Ads (Facebook + Instagram)</td>
+          <td class="s-none">None</td>
+          <td>Zero active ads found in Meta Ad Library</td>
         </tr>
         <tr>
-          <td><strong>Monthly management</strong></td>
-          <td>Campaign optimization (Google + Meta), creative refresh every 4-6 weeks, monthly performance report, email list management, RealSelf content repurposing (2 posts/week)</td>
-          <td class="pricing-amount">$2,000/mo</td>
+          <td>Google Ads</td>
+          <td class="s-none">None</td>
+          <td>No campaigns found. "Best Botox San Francisco" has no Mabrie ad.</td>
         </tr>
         <tr>
-          <td><strong>Ad spend</strong></td>
-          <td>Paid directly to Google and Meta — not to us. Estimated $2,000-$3,000/month for meaningful reach in your market.</td>
-          <td class="pricing-amount">$2-3K/mo to platforms</td>
+          <td>TikTok Ads</td>
+          <td class="s-none">None</td>
+          <td>No evidence of any campaigns</td>
         </tr>
         <tr>
-          <td><strong>Performance</strong></td>
-          <td>15% of first treatment value per new patient: clicked our ad, landed on our page, booked through our link, completed treatment within 30 days. Strictly attributed — if they didn't come through our funnel, we don't claim it.</td>
-          <td class="pricing-amount">15% first treatment</td>
+          <td>Klaviyo (Email)</td>
+          <td class="s-partial">Installed / Dormant</td>
+          <td>Installed on site. No active automation sequences confirmed externally.</td>
+        </tr>
+        <tr>
+          <td>RealSelf Presence</td>
+          <td class="s-ok">Strong</td>
+          <td>249 reviews, 4.8 stars, 542 Q&A answers. Top-tier engagement. Not amplified in paid.</td>
+        </tr>
+        <tr>
+          <td>Illumination 360 Method</td>
+          <td class="s-partial">Exists / Unexploited</td>
+          <td>Fully developed proprietary methodology. On site. Zero paid channel presence.</td>
+        </tr>
+        <tr>
+          <td>Yelp</td>
+          <td class="s-partial">Split Listings</td>
+          <td>273 reviews (Dr. Mabrie MD) + 114 reviews (MFI). Combined: 387. Neither shows it.</td>
+        </tr>
+        <tr>
+          <td>Before/After Gallery</td>
+          <td class="s-ok">Strong</td>
+          <td>239 photos on RealSelf. Not being used in paid creative (correctly — Meta policy).</td>
+        </tr>
+        <tr>
+          <td>SFGATE Dual Award</td>
+          <td class="s-partial">Exists / Unexploited</td>
+          <td>Best Medical Spa + Best Botox Center 2024. Not in paid channels.</td>
+        </tr>
+        <tr>
+          <td>Virtual Assessment Tool</td>
+          <td class="s-ok">Active</td>
+          <td>On site. Strong conversion asset. No paid traffic driving to it.</td>
         </tr>
       </tbody>
     </table>
-    <div class="guarantee-box">
-      <h3>The Guarantee</h3>
-      <p>We work for free until our system generates at least $4,500 in trackable new patient revenue from our paid channels.</p>
-      <p>If we don't hit that within 60 days of launch, we keep working at no additional charge until we do.</p>
-      <p>Everything we build — landing pages, ad creative, email sequences, Klaviyo automations — is yours. You keep it regardless.</p>
+
+    <!-- Gap cards -->
+    <span class="label">Critical Gaps</span>
+    <div class="gap-grid">
+      <div class="gap-card">
+        <h4>No Paid Acquisition</h4>
+        <p>The credential stack that closes patients on referral should also be closing cold traffic. Right now it reaches no one who hasn't already found Dr. Mabrie by other means.</p>
+      </div>
+      <div class="gap-card">
+        <h4>i360 Invisible to Cold Traffic</h4>
+        <p>A proprietary methodology that Dr. Mabrie trains other doctors in. The strongest differentiator in the SF injectable market. Not in a single paid ad.</p>
+      </div>
+      <div class="gap-card">
+        <h4>542 Q&A Answers, Zero Amplification</h4>
+        <p>RealSelf thought leader territory. Most providers have 30-50 reviews. 542 answered questions is a content asset the platform built for free. None of it is reaching cold traffic.</p>
+      </div>
+      <div class="gap-card">
+        <h4>Yelp Review Split</h4>
+        <p>387 combined reviews showing as 273 and 114 separately. A unified presence would rank significantly higher for local searches. Simple to fix, no budget required.</p>
+      </div>
+    </div>
+
+    <!-- Build phases -->
+    <span class="label">What We'd Build</span>
+    <div class="phase-list">
+      <div class="phase-card">
+        <span class="phase-num">Phase 1 — Month 1</span>
+        <div class="phase-title">Cold Acquisition System</div>
+        <div class="phase-body">
+          <p><strong>Google Search — High Intent Capture.</strong> Every high-intent search for this audience gets a dedicated ad group with a dedicated landing page — not the homepage.</p>
+          <ul>
+            <li>"best botox san francisco" / "filler specialist sf"</li>
+            <li>"facial filler expert san francisco" / "botox near union square"</li>
+            <li>"non surgical rhinoplasty san francisco"</li>
+            <li>"illumination 360 san francisco" (branded — Dr. Mabrie's own method)</li>
+          </ul>
+          <p><strong>Meta / Instagram.</strong> Three ad formats: Credential Hook, i360 Method, Social Proof. Each targeting women 35-58 in SF Bay Area with household income $125K+. Retargeting layer for site visitors who don't submit within 72 hours.</p>
+          <p>Estimated ad spend: $2,000 to $3,000/month direct to platforms.</p>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <span class="phase-num">Phase 2 — Month 1-2</span>
+        <div class="phase-title">Email Activation</div>
+        <div class="phase-body">
+          <p>Klaviyo is installed. Five sequences built and ready to activate: virtual assessment follow-up, post-consultation pre-appointment, post-appointment review ask, 90-day reactivation, monthly authority email. Done-for-you. Review and activate.</p>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <span class="phase-num">Phase 3 — Month 2 Ongoing</span>
+        <div class="phase-title">RealSelf Authority Amplification</div>
+        <div class="phase-body">
+          <p>249 reviews, 4.8 stars, 542 answered questions. That content gets repurposed: review pull-quotes into Meta social proof ads, Q&A answers reformatted as Instagram educational content (2 posts per week from the existing library). Organic and paid working the same asset.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="audit-cta">
+      <a href="#cta" class="btn btn-gold">Book a 30-Minute Call</a>
+      <p class="audit-cta-note">Walk through any of this. I'll answer every question.</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- CTA -->
-<div class="cta-section" id="cta">
-  <div class="cta-inner">
-    <span class="cta-label">Next Step</span>
-    <h2 class="cta-h2">30 minutes. No pitch deck. No commitment.</h2>
-    <p class="cta-sub">You ask anything. I'll walk through the Google Search piece, the Meta strategy, or the economics — wherever you want to start. If it doesn't make sense for your practice, I'll tell you straight.</p>
-    <a href="https://calendly.com/marcogarcia" target="_blank" class="btn-white">Book a 30-Minute Call</a>
-    <p class="cta-note">Or email directly: marco@groundup.click</p>
+
+<!-- ═══════════════════════════════════════
+     6. OFFER + PRICING + GUARANTEE
+═══════════════════════════════════════ -->
+<section class="offer-section" id="offer">
+  <div class="wrap">
+    <span class="label">The Engagement</span>
+    <h2 class="h2">The numbers. The deliverables. <em>The guarantee.</em></h2>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Detail</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Setup (one-time)</td>
+          <td>Full strategy document, 3 ad creatives (copy + brief), dedicated landing pages, Klaviyo sequences built and ready to activate, RealSelf content bridge, first Google Search campaign (5-8 ad groups, conversion tracking installed)</td>
+          <td class="price-val">$4,500</td>
+        </tr>
+        <tr>
+          <td>Monthly management</td>
+          <td>Campaign management and optimization (Google + Meta), creative refresh every 4-6 weeks, monthly performance report (cost per consultation request, cost per booked patient), email list management, RealSelf content repurposing (2 posts/week)</td>
+          <td class="price-val">$2,000/month</td>
+        </tr>
+        <tr>
+          <td>Ad spend</td>
+          <td>Paid directly to Google and Meta — not to us. Full transparency on what goes where.</td>
+          <td class="price-val">$2,000–$3,000/month</td>
+        </tr>
+        <tr>
+          <td>Performance</td>
+          <td>15% of first treatment value per new patient who booked through our dedicated funnel and completed treatment within 30 days. Attribution window is tight and clean — only what came through our system.</td>
+          <td class="price-val">15% of first treatment</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Economics projection -->
+    <span class="label" style="margin-top:8px;">The Economics</span>
+    <div class="phase-card" style="margin-bottom:24px;">
+      <div class="phase-body">
+        <p>At a conservative $1,200 average first treatment value (below i360 full-face entry point of $1,500+):</p>
+        <ul>
+          <li>5 new patients/month from paid: $6,000 revenue from new patients. Performance component: $900.</li>
+          <li>10 new patients/month: $12,000 new patient revenue. Performance: $1,800.</li>
+          <li>20 new patients/month: $24,000 new patient revenue. Performance: $3,600.</li>
+        </ul>
+        <p>Those numbers get substantially larger when i360 full-face treatments are the entry point at $2,000+. Patient LTV at quarterly Botox maintenance + periodic filler top-ups runs $3,000-$12,000+ per year — the acquisition cost amortizes fast.</p>
+      </div>
+    </div>
+
+    <!-- Guarantee -->
+    <div class="guarantee-box">
+      <span class="guarantee-box-label">The Guarantee</span>
+      <h3>We work for free until the system generates at least $4,500 in trackable new patient revenue.</h3>
+      <p>If we don't hit that within 60 days of launch, we keep working at no additional charge until we do. The management fee does not resume until the guarantee is met.</p>
+      <p>Everything we build — landing pages, ad creative, email sequences, Klaviyo automation — is yours. You keep it regardless of how the engagement goes.</p>
+    </div>
+
+    <div class="offer-cta">
+      <a href="#cta" class="btn btn-gold">Book a 30-Minute Call</a>
+      <p class="offer-cta-note">No commitment. No pitch. You ask anything.</p>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
+
+<!-- ═══════════════════════════════════════
+     7. FINAL CTA
+═══════════════════════════════════════ -->
+<section class="cta-section" id="cta">
+  <div class="wrap" style="text-align:center;">
+    <span class="label" style="justify-content:center; display:block; margin-bottom:18px;">Next Step</span>
+    <h2 class="cta-h2">
+      30 minutes to see if this<br><em>makes sense for your practice.</em>
+    </h2>
+    <p class="cta-sub">
+      No pitch deck. No commitment. I'll walk through what we found, answer every question, and tell you exactly what the setup would look like for 166 Geary. If it's not a fit, I'll tell you that too.
+    </p>
+
+    <a href="[CALENDLY_URL]" class="btn btn-gold" style="font-size:15px; padding:18px 44px;">
+      Book a 30-Minute Call
+    </a>
+    <p class="cta-note">Or reply directly — marco@groundup.click</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
 <footer>
-  <p><strong>Marco Garcia</strong> &nbsp;|&nbsp; Ground Up Agency &nbsp;|&nbsp; <a href="mailto:marco@groundup.click">marco@groundup.click</a></p>
-  <p style="margin-top:8px;">Built specifically for Mabrie Facial Institute &nbsp;|&nbsp; 166 Geary Street, Union Square, San Francisco</p>
+  <p><strong>Ground Up Agency</strong> &nbsp;·&nbsp; Built specifically for <strong>Mabrie Facial Institute</strong> at 166 Geary Street, San Francisco &nbsp;·&nbsp; <a href="mailto:marco@groundup.click">marco@groundup.click</a></p>
+  <p style="margin-top:8px;">April 2026 &nbsp;·&nbsp; <a href="#top">Back to top</a></p>
 </footer>
 
-<script>
-  // Replace with your actual Loom video ID (the part after loom.com/share/)
-  const LOOM_ID = 'YOUR_LOOM_ID';
 
-  function loadLoom() {
-    if (LOOM_ID === 'YOUR_LOOM_ID') {
-      alert('Paste your Loom video ID into the LOOM_ID variable in the script at the bottom of this file.');
+<script>
+  // VSL lazy-load — replace LOOM_ID with actual Loom video ID
+  const LOOM_ID = 'LOOM_ID_HERE';
+
+  function loadVSL() {
+    const placeholder = document.getElementById('vsl-placeholder');
+    const iframe = document.getElementById('vsl-iframe');
+    if (!LOOM_ID || LOOM_ID === 'LOOM_ID_HERE') {
+      alert('VSL not yet linked. Add Loom ID to the LOOM_ID variable in the script.');
       return;
     }
-    document.getElementById('loom-placeholder').style.display = 'none';
-    const iframe = document.getElementById('loom-iframe');
-    iframe.src = 'https://www.loom.com/embed/' + LOOM_ID + '?autoplay=1&hide_owner=true&hide_share=true&hide_title=true';
+    iframe.src = `https://www.loom.com/embed/${LOOM_ID}?autoplay=1`;
+    placeholder.style.display = 'none';
     iframe.style.display = 'block';
   }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
 </script>
 
 </body>
